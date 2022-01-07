@@ -48,12 +48,21 @@ main {
     right: 20px;
     width: 120px;
     height: 30px;
-    border-radius: 5px;
+    border-radius: 2px;
 }
 
 #logout{
     top: 160px;
 }
+
+#sign-in-password,
+#sign-in-email,
+#sign-up-password,
+#sign-up-email{
+    border: 1px solid black;
+    border-radius: 1px;
+}
+
 
 #logout:hover{
     background-color: grey;
@@ -101,6 +110,10 @@ main {
     gap: 20px;
 }
 
+.border-radius-2px{
+    border-radius: 2px;
+}
+
 .item-quantity, .list-item{
     display: inline-block;
 }
@@ -133,6 +146,7 @@ main {
 .input-container{
     display: flex;
     flex-direction: column;
+    border-radius: 2px;
 }
 
 .pad-left{
@@ -144,6 +158,7 @@ main {
     padding: 20px;
     background-color: lightgreen;
     width: 800px;
+    border-radius: 2px;
 }
 
 #sub-title{
@@ -159,7 +174,7 @@ header {
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    background-color: var(--indigo);
+    background-color: darkgreen;
     height: var(--header-height);
     box-shadow: var(--shadow);
 }
@@ -185,8 +200,8 @@ footer {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background-color: var(--indigo);
-    color: var(--chartreuse);
+    background-color: darkgreen;
+    color: lightgreen;
     box-shadow: var(--footer-shadow);
 }
 
@@ -213,4 +228,32 @@ footer {
 
 .left, .right{
     background-color: white;
+    border-radius: 1px;
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.light-green{
+    color: lightgreen;
+}
+
+.add-item{
+    background-color: darkgreen;
+    color: lightgreen;
+    border: 1px solid darkgreen;
+}
+
+.add-item:hover{
+    background-color: lightgreen;
+    color: darkgreen;
+    border: 1px solid lightgreen;
+}
+
+.add-item:active{
+    background-color: var(--green);
+    color: darkgreen;
+    border: 1px solid lightgreen;
+}
+
+.cursor-pointer{
+    cursor: pointer;
 }

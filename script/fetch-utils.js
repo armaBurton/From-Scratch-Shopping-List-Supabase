@@ -15,7 +15,6 @@ export async function createListItem(quantity, item){
             {
                 quantity,
                 item,
-                purchased: false
             }
         ]);
     
@@ -23,7 +22,6 @@ export async function createListItem(quantity, item){
 }
 
 export async function togglePurchased(id){
-    console.log(id);
     const response = await client
         .from(`list`)
         .update({ purchased: true })

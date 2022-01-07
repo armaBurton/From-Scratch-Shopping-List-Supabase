@@ -17,23 +17,23 @@
             <img src="../assets/big-logo.png" />
         </div>
     </header>
-    <button class="delete-list" id="delete-list">Delete List</button>
-    <button class="logout" id="logout">Logout</button>
+    <button class="delete-list cursor-pointer" id="delete-list">Delete List</button>
+    <button class="logout cursor-pointer" id="logout">Logout</button>
     <main>
         <section class="list-creation" id="list-creation">
             <h1 class="title" id="title">Shopping List </h1>
             <form action="submit" id="form">
                 <div class="flex-row" id="flex-row">
                     <div class="input-container" id="quantity-continer">
-                        <label for="quantity-input" class="pad-left">quantity</label>
-                        <input id="quantity-input" class="pad-left" name="quantity-input" type="number" required>
+                        <label for="quantity-input" class="pad-left light-green">quantity</label>
+                        <input id="quantity-input" class="pad-left border-radius-2px" name="quantity-input" type="number" required>
                     </div>
                     <div class="input-container" id="item-container">
-                        <label for="item-input" class="pad-left">item</label>
-                        <input class="item-input pad-left" id="item-input" name="item-input" type="text" required>
+                        <label for="item-input" class="pad-left light-green">item</label>
+                        <input class="item-input pad-left border-radius-2px" id="item-input" name="item-input" type="text" required>
                     </div>
                 </div>
-                <button class="add-item" id="add-item">Add Item</button>
+                <button class="add-item cursor-pointer" id="add-item">Add Item</button>
             </form>
         </section>
         <section class="list-container" id="list-container">

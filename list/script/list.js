@@ -4,7 +4,7 @@ import {
     createListItem,
     getListItems,
     togglePurchased,
-    deleteList
+    deleteList,
 } from '../../script/fetch-utils.js';
 
 const logoutButton = document.getElementById(`logout`);
@@ -44,32 +44,37 @@ deleteButton.addEventListener(`click`, async() => {
 
 async function fetchAndDisplayList(){
     const list = await getListItems();
-
     renderedList.textContent = '';
     
     for (let l of list){
-
-        const div = document.createElement(`div`);
-        div.classList.add(`item-div`, `flex-row`, `pad-left`);
         
-        div.addEventListener(`click`, async() => {
+        const div = document.createElement(`div`);
+
+        if (l.purchased){
             div.classList.remove(`item-div`);
-            div.classList.add(`item-div-purchased`);
-            
-            await togglePurchased(l.id);
-        });
+            div.classList.add(`item-div-purchased`, `flex-row`, `pad-left`);
+        } else if (!l.purchased){
+            div.classList.add(`item-div`, `flex-row`, `pad-left`);
+        }
 
         const quantity = document.createElement(`p`);
         quantity.classList.add(`item-quantity`);
         quantity.textContent = l.quantity;
-
+        
         const item = document.createElement(`p`);
         item.classList.add(`list-item`);
         item.textContent = l.item;
-
+        
         div.append(quantity, item);
-
+        
         renderedList.append(div);
+        
+        div.addEventListener(`click`, async() => {
+
+            await togglePurchased(l.id);
+            await fetchAndDisplayList();
+            
+        });
     }
 }
 
