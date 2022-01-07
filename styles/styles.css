@@ -1,5 +1,5 @@
 
-body {
+* {
     /* feel free to update these css variables for a quick theme */
     
     --magenta: #ba2575;
@@ -16,44 +16,153 @@ body {
     --gutter: 30px;
     --footer-height: 35px;
     
+    margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
     font-family: 'Titillium Web', sans-serif;
 }
 
 body{
+    width: 100%;
     background-color: var(--green);
 }
 
 main {
-    width: 100vw;
+    padding-top: 100px;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin-bottom: calc(var(--footer-height));
 }
 
-section {
-    background-color: var(--orange);
-    max-width: 80%;
+.auth-main{
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: var(--gutter);
-    padding-bottom: var(--gutter);
-    margin-top: var(--gutter);
-    margin-bottom: var(--gutter);
-    border: solid 2px var(--magenta);
+    width: 100%;
+}
+
+#delete-list, #logout{
+    position: fixed;
+    right: 20px;
+    width: 120px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+#logout{
+    top: 160px;
+}
+
+#logout:hover{
+    background-color: grey;
+}
+
+#logout:active{
+    background-color: black;
+    color: white;
+}
+
+#delete-list{
+    top: 120px;
+    background-color: red;
+}
+
+#delete-list:hover{
+    background-color: orange;
+}
+
+#delete-list:active{
+    background-color: yellow;
+}
+
+.title{
+    text-align: center;
+    font-size: 2rem;
+}
+
+.item-input{
+    width: 300px;
+}
+
+#form{
+    /* display: flex; */
+    gap: 20px;
+    padding: 10px 20px 20px 20px;
+    margin-top: 20px;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.item-quantity, .list-item{
+    display: inline-block;
+}
+
+.item-div{
+    text-align: center;
+    background-color: bisque;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.item-div-purchased{
+    text-align: center;
+    background-color: var(--green);
+    color: lightgreen;
+    margin-bottom: 10px;
+    cursor: pointer;
+    text-decoration: line-through;
+    pointer-events: none;
+    border-radius: 3px;
+}
+
+#add-item{
+    margin-top: 10px;
+    padding: 3px 0;
+    width: 100%;
+}
+
+.input-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.pad-left{
+    padding-left: 5px;
+}
+
+#list-container{
+    margin-top: 30px;
+    padding: 20px;
+    background-color: lightgreen;
+    width: 800px;
+}
+
+#sub-title{
+    width: 100%;
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 20px;
 }
 
 header {
+    position: fixed;
+    top: 0;
+    width: 100%;
     display: flex;
     justify-content: flex-end;
     background-color: var(--indigo);
     height: var(--header-height);
     box-shadow: var(--shadow);
 }
-
 
 h2 {
     font-size: 1.8rem;
@@ -79,4 +188,29 @@ footer {
     background-color: var(--indigo);
     color: var(--chartreuse);
     box-shadow: var(--footer-shadow);
+}
+
+.auth-main {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100%;
+    gap: 20px;
+}
+
+.auth-container {
+    margin: 10px;
+}
+
+.auth-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-container button {
+    margin: 10px;
+}
+
+.left, .right{
+    background-color: white;
 }
