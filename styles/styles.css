@@ -6,6 +6,8 @@
     --indigo: #710be6;
     --chartreuse: #90ff12;
     --green: #39b372;
+    --green-transparent: #39b37288;
+    --light-green-transparent: #90EE90dd;
     --orange: #f77e14;
     
     /* https://coolors.co/generate and click export -> scss to get the colors to copy and paste below*/
@@ -25,7 +27,8 @@
 
 body{
     width: 100%;
-    background-color: var(--green);
+    /* background-color: var(--green); */
+    background-image: linear-gradient(#39b37288, #39b37288 ), url('../assets/produce.jpg');
 }
 
 main {
@@ -91,6 +94,10 @@ main {
     font-size: 2rem;
 }
 
+.dark-green{
+    color: darkgreen;
+}
+
 .item-input{
     width: 300px;
 }
@@ -100,8 +107,10 @@ main {
     gap: 20px;
     padding: 10px 20px 20px 20px;
     margin-top: 20px;
-    border: 1px solid black;
-    border-radius: 3px;
+    /* border: 1px solid black; */
+    border-radius: 2px;
+    background-color: var(--light-green-transparent);
+    box-shadow: 0 0 5px darkgreen;
 }
 
 .flex-row{
@@ -156,9 +165,11 @@ main {
 #list-container{
     margin-top: 30px;
     padding: 20px;
-    background-color: lightgreen;
+    background-color: var(--light-green-transparent);
     width: 800px;
     border-radius: 2px;
+    box-shadow: 0 0 5px darkgreen;
+
 }
 
 #sub-title{
@@ -174,9 +185,9 @@ header {
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    background-color: darkgreen;
     height: var(--header-height);
     box-shadow: var(--shadow);
+    background-color: #39b37288;
 }
 
 h2 {
@@ -199,8 +210,8 @@ footer {
     height: var(--footer-height);
     display: flex;
     justify-content: flex-end;
+    background-color: #39b37288;
     align-items: center;
-    background-color: darkgreen;
     color: lightgreen;
     box-shadow: var(--footer-shadow);
 }
@@ -236,6 +247,10 @@ footer {
     color: lightgreen;
 }
 
+.dark-green{
+    color: darkgreen;
+}
+
 .add-item{
     background-color: darkgreen;
     color: lightgreen;
@@ -243,15 +258,15 @@ footer {
 }
 
 .add-item:hover{
-    background-color: lightgreen;
+    background-color: var(--green);
     color: darkgreen;
-    border: 1px solid lightgreen;
+    border: 1px solid darkgreen;
 }
 
 .add-item:active{
-    background-color: var(--green);
+    background-color: lightgreen;
     color: darkgreen;
-    border: 1px solid lightgreen;
+    border: 1px solid darkgreen;
 }
 
 .cursor-pointer{
