@@ -46,6 +46,30 @@ export async function deleteList(){
     return checkError(response);
 }
 
+export async function removeCheckedItems(){
+    const checkboxes = document.querySelectorAll(`.checkbox:checked`);
+
+    for (let c of checkboxes){
+        console.log(c);
+        await deleteListItem(c.id);
+    }
+    Array.prototype.forEach.call(checkboxes, async(checkbox) => {
+        console.log(checkbox);
+        checkbox.closest(`div`).remove();
+        await deleteListItem();
+    });
+}
+
+async function deleteListItem(id){
+    const response = await client
+        .from(`list`)
+        .delete()
+        .match({ id })
+        .single();
+
+    return checkError(response);
+}
+
 export async function checkAuth() {
     const user = await getUser();
 

@@ -5,12 +5,14 @@ import {
     getListItems,
     togglePurchased,
     deleteList,
+    removeCheckedItems
 } from '../../script/fetch-utils.js';
 
 const logoutButton = document.getElementById(`logout`);
 const deleteButton = document.getElementById(`delete-list`);
 const form = document.getElementById(`form`);
 const renderedList = document.getElementById(`rendered-list`);
+const deleteChecked = document.getElementById(`delete-checked`);
 
 checkAuth();
 
@@ -42,43 +44,64 @@ deleteButton.addEventListener(`click`, async() => {
     await fetchAndDisplayList();
 });
 
+deleteChecked.addEventListener(`click`, async() => {
+    
+    await removeCheckedItems();
+    await fetchAndDisplayList();
+});
+
 async function fetchAndDisplayList(){
     const list = await getListItems();
     renderedList.textContent = '';
-    
+
     for (let l of list){
-        
-        const div = document.createElement(`div`);
 
-        if (l.purchased){
-            div.classList.remove(`item-div`);
-            div.classList.add(`item-div-purchased`, `flex-row`, `pad-left`);
-        } else if (!l.purchased){
-            div.classList.add(`item-div`, `flex-row`, `pad-left`);
-        }
+        const listItem = renderItem(l);
+        renderedList.append(listItem);
 
-        const quantity = document.createElement(`p`);
-        quantity.classList.add(`item-quantity`);
-        quantity.textContent = l.quantity;
-        
-        const item = document.createElement(`p`);
-        item.classList.add(`list-item`);
-        item.textContent = l.item;
-        
-        div.append(quantity, item);
-        
-        renderedList.append(div);
-        
-        div.addEventListener(`click`, async() => {
-
-            await togglePurchased(l.id);
-            await fetchAndDisplayList();
-            
-        });
     }
+}
+
+function renderItem(l){
+    const div = document.createElement(`div`);
+    
+    if (l.purchased){
+        div.classList.remove(`item-div`);
+        div.classList.add(`item-div-purchased`, `flex-row`, `pad-left`);
+    } else if (!l.purchased){
+        div.classList.add(`item-div`, `flex-row`, `pad-left`);
+    }
+    
+    const checkbox = document.createElement(`input`);
+    checkbox.type = `checkbox`;
+    checkbox.name = `check-list-item`;
+    checkbox.classList.add(`checkbox`);
+
+    checkbox.id = l.id;
+
+    const doubleDiv = document.createElement(`div`);
+    doubleDiv.classList.add(`double-div`);
+    
+    const quantity = document.createElement(`p`);
+    quantity.classList.add(`item-quantity`);
+    quantity.textContent = l.quantity;
+    
+    const item = document.createElement(`p`);
+    item.classList.add(`list-item`);
+    item.textContent = l.item;
+        
+    // div.appendChild(label);
+    div.append(quantity, item);
+    doubleDiv.append(checkbox, div);
+    
+    div.addEventListener(`click`, async() => {
+        await togglePurchased(l.id);
+        await fetchAndDisplayList();
+
+    });
+    return doubleDiv;
 }
 
 window.addEventListener(`load`, async() => {
     await fetchAndDisplayList();
 });
-
