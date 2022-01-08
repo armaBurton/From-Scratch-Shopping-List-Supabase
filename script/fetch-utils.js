@@ -30,6 +30,15 @@ export async function togglePurchased(id){
     return checkError(response);
 }
 
+export async function toggleRepurchase(id){
+    const response = await client
+        .from(`list`)
+        .update({ purchased: false })
+        .match({ id });
+
+    return checkError(response);
+}
+
 export async function getListItems(){
     const response = await client
         .from(`list`)

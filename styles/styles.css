@@ -29,6 +29,7 @@ body{
     width: 100%;
     /* background-color: var(--green); */
     background-image: linear-gradient(#39b37288, #39b37288 ), url('../assets/produce.jpg');
+    color: green;
 }
 
 main {
@@ -52,14 +53,17 @@ main {
     width: 150px;
     height: 30px;
     border-radius: 2px;
+    font-weight: 700;
+    color:lightgreen;
 }
 
 #logout{
-    top: 160px;
+    top: 200px;
 }
 
 #delete-checked{
-    top: 200px;
+    background-color: red;
+    top: 160px;
 }
 
 #sign-in-password,
@@ -77,7 +81,7 @@ main {
 
 #logout:active{
     background-color: black;
-    color: white;
+    /* color: white; */
 }
 
 #delete-list{
@@ -85,12 +89,14 @@ main {
     background-color: red;
 }
 
-#delete-list:hover{
+#delete-list:hover, #delete-checked:hover{
     background-color: orange;
+    color:darkgreen;
 }
 
-#delete-list:active{
+#delete-list:active, #delete-checked:active{
     background-color: yellow;
+    color: darkgreen;
 }
 
 .title{
@@ -144,7 +150,17 @@ main {
 }
 
 .list-item{
-    margin-left: 5px;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display:flex;
+    justify-content: space-between;
+}
+
+.item-quantity{
+    padding-right: 10px;
+    margin: 0;
+    border-right: 1px solid lightgreen
 }
 
 .checkbox{
@@ -160,19 +176,33 @@ main {
     width: 100%;
 }
 
-
-
 .item-div-purchased{
     text-align: center;
     background-color: var(--green);
     color: lightgreen;
-    margin-bottom: 10px;
     cursor: pointer;
-    text-decoration: line-through;
     pointer-events: none;
     border-radius: 3px;
     height: 25px;
     width: 100%;
+}
+
+.text-decoration{
+    text-decoration: line-through;
+    text-decoration-color: darkgreen;
+}
+
+.text-decoration-none{
+    text-decoration: none!important;
+}
+
+.reAdd{
+    font-weight: 900;
+    vertical-align: middle;
+    color: lightgreen;
+    pointer-events: all;
+    text-decoration: none;
+    padding-right: 10px;
 }
 
 #add-item{
@@ -198,7 +228,6 @@ main {
     width: 800px;
     border-radius: 2px;
     box-shadow: 0 0 5px darkgreen;
-
 }
 
 #sub-title{

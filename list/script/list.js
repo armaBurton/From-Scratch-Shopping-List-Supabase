@@ -4,6 +4,7 @@ import {
     createListItem,
     getListItems,
     togglePurchased,
+    toggleRepurchase,
     deleteList,
     removeCheckedItems
 } from '../../script/fetch-utils.js';
@@ -62,42 +63,58 @@ async function fetchAndDisplayList(){
     }
 }
 
-function renderItem(l){
+function renderItem(listUnit){
+
+
     const div = document.createElement(`div`);
-    
-    if (l.purchased){
-        div.classList.remove(`item-div`);
-        div.classList.add(`item-div-purchased`, `flex-row`, `pad-left`);
-    } else if (!l.purchased){
-        div.classList.add(`item-div`, `flex-row`, `pad-left`);
-    }
     
     const checkbox = document.createElement(`input`);
     checkbox.type = `checkbox`;
     checkbox.name = `check-list-item`;
     checkbox.classList.add(`checkbox`);
-
-    checkbox.id = l.id;
-
+    
+    checkbox.id = listUnit.id;
+    
     const doubleDiv = document.createElement(`div`);
     doubleDiv.classList.add(`double-div`);
     
     const quantity = document.createElement(`p`);
     quantity.classList.add(`item-quantity`);
-    quantity.textContent = l.quantity;
+    quantity.textContent = listUnit.quantity;
     
     const item = document.createElement(`p`);
     item.classList.add(`list-item`);
-    item.textContent = l.item;
-        
+    item.textContent = listUnit.item;
+    
+    const span = document.createElement(`p`);
+    span.textContent = `⭮`;
+    span.classList.add(`reAdd`);
+    
+    
+    
+    if (listUnit.purchased){
+        div.classList.remove(`item-div`);
+        div.classList.add(`item-div-purchased`, `flex-row`, `pad-left`);
+        quantity.classList.add(`text-decoration`);
+        item.classList.add(`text-decoration`);
+        span.classList.add(`text-decoration-none`);
+        span.addEventListener(`click`, async() => {
+            await toggleRepurchase(listUnit.id);
+            await fetchAndDisplayList();
+        });
+        // item.append(span);
+        div.append(quantity, item, span);
+    } else if (!listUnit.purchased){
+        div.classList.add(`item-div`, `flex-row`, `pad-left`);
+        div.append(quantity, item);
+    }
     // div.appendChild(label);
-    div.append(quantity, item);
     doubleDiv.append(checkbox, div);
     
     div.addEventListener(`click`, async() => {
-        await togglePurchased(l.id);
+        await togglePurchased(listUnit.id);
         await fetchAndDisplayList();
-
+        
     });
     return doubleDiv;
 }
